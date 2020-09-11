@@ -59,3 +59,7 @@ Explique de forma resumida as dificuldades que teve e como resolveu.
    - No entanto não funcionava isso, eu não queria ter que passar uma variável no construtor mas só funcionou meu código assim.
    - Para utilizar uma lista no Parcelable apelei para o StackOverflow, no entanto as soluções que tinham usavam construtor, então também resolvi usar.
    - No fim consegui realizar a atividade, mas seria bom se tivesse uma explicação um pouco mais detalhada do Parcelable e como utilizá-o.
+
+## Screen Shots
+
+![image1] (app/src/Screens/TelaPrincipalCalculadora.png)
