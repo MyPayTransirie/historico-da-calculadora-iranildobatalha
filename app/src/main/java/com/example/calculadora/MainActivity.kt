@@ -13,22 +13,26 @@ import org.json.JSONStringer
 
 class MainActivity : AppCompatActivity() {
 
-    var expressao: String = "0"
-    val historico = arrayListOf<String>()
+    var expressao: String = "0" // Expressão atual
+    val historico = arrayListOf<String>() //Lista de expressões calculadas
+    val json = JSONObject("{ 'historico': [] }") //Variável que empacota como JSON
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Limpa a expressão atual na tela e na variável
         buttonLimpar.setOnClickListener {
             expressao = "0"
             textView.text = expressao
         }
 
+        // Calcula a expressão e salva no histórico
         buttonResult.setOnClickListener {
             if(expressao.last().isDigit()){
                 textView.text = eval(expressao).toString()
                 historico.add("$expressao = ${textView.text}")
+                json.accumulate("historico", "$expressao = ${textView.text}")
                 expressao = "0"
             }
             else {
@@ -36,13 +40,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // Direciona o usuário para uma tela de Histórico e carrega o histórico dos cálculos
         buttonHistorico.setOnClickListener {
             val intent = Intent(applicationContext,Historico::class.java)
+            //Convertendo uma lista em uma string separada por ";" e enviando para a outra tela
             intent.putExtra("historico", historico.joinToString(";"))
+            //Enviando para a outra tela o JSON como uma string
+            intent.putExtra("json",json.toString())
             startActivity(intent)
         }
     }
 
+    // Função comum a todos os botões de operações e que adiciona a operação selecionada na expressão
     fun onClickOperacoes(v: View){
         if(expressao.last().isDigit()){
             var beta: Button = findViewById(v.id)
@@ -54,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Função comum a todos os botões que são dígitos, adicionando o digíto no final da expressão
     fun onClick(v: View) {
         val beta: Button = this.findViewById(v.id)
         if(expressao == "0"){
@@ -66,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Função que calcula o resultado das expressões
     fun eval(str: String): Double {
         return object : Any() {
             var pos = -1
