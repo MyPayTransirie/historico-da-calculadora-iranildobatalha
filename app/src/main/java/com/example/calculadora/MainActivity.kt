@@ -2,20 +2,20 @@ package com.example.calculadora
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.JsonWriter
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
-import org.json.JSONStringer
 
 class MainActivity : AppCompatActivity() {
 
     var expressao: String = "0" // Expressão atual
     val historico = arrayListOf<String>() //Lista de expressões calculadas
     val json = JSONObject("{ 'historico': [] }") //Variável que empacota como JSON
+    var arrayHistorico: Array<String> = arrayOf() // Array<String> que guarda o histórico
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +30,16 @@ class MainActivity : AppCompatActivity() {
         // Calcula a expressão e salva no histórico
         buttonResult.setOnClickListener {
             if(expressao.last().isDigit()){
-                textView.text = eval(expressao).toString()
-                historico.add("$expressao = ${textView.text}")
-                json.accumulate("historico", "$expressao = ${textView.text}")
-                expressao = "0"
+                textView.text = eval(expressao).toString() //Recebendo o resultado da expressão
+                val resposta = "$expressao = ${textView.text}" //Colocando a resposta em uma variável
+
+                historico.add(resposta) // Salvando a reposta num ArrayList<String>
+
+                json.accumulate("historico", resposta) //Salvando a resposta num array de JSON
+
+                arrayHistorico = arrayHistorico.plusElement(resposta) // Salvando a resposta num Array<String>
+
+                expressao = "0" //Zerando a expressão
             }
             else {
                 Toast.makeText(applicationContext, "Operação inválida!", Toast.LENGTH_LONG).show()
@@ -42,11 +48,22 @@ class MainActivity : AppCompatActivity() {
 
         // Direciona o usuário para uma tela de Histórico e carrega o histórico dos cálculos
         buttonHistorico.setOnClickListener {
-            val intent = Intent(applicationContext,Historico::class.java)
+            val hist = Historico(historico) // Variável que implementa Parcelable
+
+            val intent = Intent(applicationContext,TelaHistorico::class.java)
+
             //Convertendo uma lista em uma string separada por ";" e enviando para a outra tela
             intent.putExtra("historico", historico.joinToString(";"))
+
             //Enviando para a outra tela o JSON como uma string
             intent.putExtra("json",json.toString())
+
+            //Enviando um Array<String> para a próxima tela
+            intent.putExtra("array", arrayHistorico)
+
+            //Enviando um Parcelable para a próxima tela
+            intent.putExtra("parcelable", hist)
+
             startActivity(intent)
         }
     }

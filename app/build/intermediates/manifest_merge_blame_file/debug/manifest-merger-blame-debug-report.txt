@@ -28,9 +28,9 @@
 19        android:testOnly="true"
 20        android:theme="@style/AppTheme" >
 20-->C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:11:9-40
-21        <activity android:name="com.example.calculadora.Historico" />
-21-->C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:12:9-56
-21-->C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:12:19-44
+21        <activity android:name="com.example.calculadora.TelaHistorico" />
+21-->C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:12:9-60
+21-->C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:12:19-48
 22        <activity android:name="com.example.calculadora.MainActivity" >
 22-->C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:13:9-19:20
 22-->C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:13:19-47

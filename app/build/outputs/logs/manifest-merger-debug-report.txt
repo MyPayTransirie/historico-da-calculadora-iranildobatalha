@@ -65,10 +65,10 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\ir
 		ADDED from C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
 		ADDED from C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:11:9-40
-activity#com.example.calculadora.Historico
-ADDED from C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:12:9-56
+activity#com.example.calculadora.TelaHistorico
+ADDED from C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:12:9-60
 	android:name
-		ADDED from C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:12:19-44
+		ADDED from C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:12:19-48
 activity#com.example.calculadora.MainActivity
 ADDED from C:\Users\irani\AndroidStudioProjects\Calculadora\app\src\main\AndroidManifest.xml:13:9-19:20
 	android:name

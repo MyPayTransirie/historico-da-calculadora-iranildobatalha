@@ -39,7 +39,7 @@ Abaixo segue alguns passos sugeridos para criar a aplicação:
 |   7  | Enviar histórico como JSON            | sim |
 |   8  | Enviar histórico como `Array<String>` | sim |
 |   9  | Salvar histórico como `Historico`     | sim |
-|   10 | Enviar histórico com `Parcelable`    |            |
+|   10 | Enviar histórico com `Parcelable`    | sim |
 
 ----------
 ## Dificuldades
@@ -48,8 +48,14 @@ Explique de forma resumida as dificuldades que teve e como resolveu.
 
 > Escreva: "não tive dificuldades" se for o caso e apague o resto
 
-1. **Importar biblioteca X**
-   - Não consegui importar a biblioteca X por conta disso e daquilo.
-   - Resolvi fazendo X, Y e Z...
-2. **Avaliação de expressão**
-   - Resolvi implementar minha própria e por não conhecer Kotlin demorei bastante...
+1. **Enviar meu projeto para o github da turma**
+   - Tive muita dificuldade em enviar meu código para o github
+   - Conversei então com um colega que me ajudou e me mostrou onde eu estava errando nos comandos git.
+2. **Dificuldade em utilizar o JSON**
+   - Não conseguia encontrar em sites exemplos usando JSON em Kotlin e os que apareciam em Java eram meio complicados
+   - Apelei para a documentação do Kotlin que é bem densa, mas para a minha surpresa consegui entender como utilizar e consegui fazer a atividade com o auxilio de um video da internet.
+3. **Utilizar o Parcelable**
+   - Minha ideia para o Parcelable era criar uma classe com um atributo List<String> em que eu podia ir adicionando as expressoes e no final enviar a classe como um pacote.
+   - No entanto não funcionava isso, eu não queria ter que passar uma variável no construtor mas só funcionou meu código assim.
+   - Para utilizar uma lista no Parcelable apelei para o StackOverflow, no entanto as soluções que tinham usavam construtor, então também resolvi usar.
+   - No fim consegui realizar a atividade, mas seria bom se tivesse uma explicação um pouco mais detalhada do Parcelable e como utilizá-o.

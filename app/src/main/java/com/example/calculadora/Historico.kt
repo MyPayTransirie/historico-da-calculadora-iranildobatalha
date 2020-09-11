@@ -1,31 +1,36 @@
 package com.example.calculadora
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import kotlinx.android.synthetic.main.activity_historico.*
-import org.json.JSONObject
+import android.os.Build
+import android.os.Parcel
+import android.os.Parcelable
 
-class Historico : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_historico)
 
-        //Usando uma String concatenada com ";" para receber o histórico
-        val historico = intent.getStringExtra("historico")
-        val expressoes = historico?.replace(";","\n\n")
-        //txtHistorico.text = expressoes
-
-        //Usando um objeto JSON para obter o histórico vindo da tela anterior
-        val jsonString =  intent.getStringExtra("json").toString() // Obtendo o JSON como uma String
-        val json = JSONObject(jsonString) // Convertendo a String para o formato JSON
-        val lista = json.getJSONArray("historico") // Obtendo o array com as expressões dentro do objeto JSON
-        val resposta = arrayListOf<String>()
-        for(i in 0 until lista.length()){
-            //Pegando item por item e os guardando em uma lista de resposta para ser passado ao TextView
-            resposta.add(lista.getString(i))
+class Historico(var historic: ArrayList<String>) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        arrayListOf<String>().apply {
+            parcel.readList(this, String::class.java.classLoader)
         }
-        //Passando a lista como uma string para a TextView
-        //txtHistorico.text = resposta.joinToString("\n\n")
+    ) {
     }
+
+    override fun describeContents(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun writeToParcel(p0: Parcel?, p1: Int) {
+        arrayListOf<String>().apply {
+            p0?.writeList(historic)
+        }
+    }
+
+    companion object CREATOR : Parcelable.Creator<Historico> {
+        override fun createFromParcel(parcel: Parcel): Historico {
+            return Historico(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Historico?> {
+            return arrayOfNulls(size)
+        }
+    }
+
 }
